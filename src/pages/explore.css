@@ -1,0 +1,68 @@
+.buttonExplore button{
+    font-size: medium;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    margin: 8vw;
+    background-image: url(https://media.istockphoto.com/videos/caipirinha-cocktail-on-copacabana-beach-rio-de-janeiro-video-id473141819?s=640x640);
+    background-size: 100% 100%;
+    border-radius: 15px;
+    padding: 20px;
+    width: 30vw;
+    height: 15vh;
+    transition: all 0.3s ease-out;
+    box-shadow:
+    0 0 6px 3px #fff,
+    0 0 10px 6px rgb(0, 0, 0);
+}
+
+.buttonExplore button:first-child {
+    color: white;
+    background-image: url(https://media.istockphoto.com/photos/lasagna-on-a-square-white-plate-picture-id535851351?k=20&m=535851351&s=612x612&w=0&h=jdWOk9G_OOzHvPrvFrigqzk3EoucmIhUZr1-ey9NcGM=);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 2px gold;
+}
+
+.buttonExplore {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10vw;
+}
+
+@media(min-width: 605px) {
+    .buttonExplore button {
+        font-size: large;
+        margin: 5vw;
+    }
+}
+
+@media(min-width: 800px) {
+    .buttonExplore button {
+        font-size: x-large;
+        height: 18vh;
+    }
+}
+
+@media(min-width: 1000px) {
+    .buttonExplore button {
+        font-size: xx-large;
+        margin: 4vw;
+    }
+}
+
+@media(min-width: 1200px) {
+    .buttonExplore button {
+        font-size: xx-large;
+        margin: 3vw;
+        width: 25vw;
+        height: 20vh;
+    }
+}

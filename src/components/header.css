@@ -1,0 +1,14 @@
+.buttonIcon {
+  border-style: none;
+}
+
+header {
+  border: 1px solid black;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  position: sticky;
+  justify-content: space-around;
+  width: 100vw;
+}

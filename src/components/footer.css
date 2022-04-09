@@ -1,0 +1,13 @@
+footer {
+  border: 1px solid black;
+  bottom: 0;
+  display: flex;
+  background-color: antiquewhite;
+  justify-content: space-around;
+  position:fixed;
+  width: 100%;
+}
+
+footer button {
+  border-style: none;
+}
