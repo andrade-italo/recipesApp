@@ -24,8 +24,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: -10px;
+    justify-content: space-around;
+    /* padding: 0 10px; */
 }
 
 .cardFavoriteDone img {

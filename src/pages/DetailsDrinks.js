@@ -86,14 +86,14 @@ function Details() {
 
   const cardDetails = (strThumb, strName, strCategory) => (
     <div className="details">
+      <h3 data-testid="recipe-title">{strName}</h3>
+      <p data-testid="recipe-category">{strCategory}</p>
       <img
         alt="foto"
         data-testid="recipe-photo"
         width="100px"
         src={ strThumb }
       />
-      <h3 data-testid="recipe-title">{strName}</h3>
-      <p data-testid="recipe-category">{strCategory}</p>
       <div className="favoriteAndCopy">
         <input
           type="image"

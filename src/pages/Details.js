@@ -87,18 +87,16 @@ function Details() {
 
   const cardDetails = (item) => (
     <div className="details">
+      <h3 data-testid="recipe-title">{`${item.strMeal}`}</h3>
+      <p data-testid="recipe-category">
+        {`${item.strCategory}` }
+      </p>
       <img
         alt="foto"
         data-testid="recipe-photo"
         width="100px"
         src={ item.strMealThumb }
       />
-
-      {/* <div className="inlineDetails"> */}
-      <h3 data-testid="recipe-title">{`${item.strMeal}`}</h3>
-      <p data-testid="recipe-category">
-        {`${item.strCategory}` }
-      </p>
       <div className="favoriteAndCopy">
         <input
           type="image"
