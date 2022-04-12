@@ -26,7 +26,7 @@ function TelaLogin() {
 
   return (
     <div className="supimpa">
-      Supimpas Food
+      <p>Supimpas Food</p>
       <div className="containerLogin">
         <input
           type="email"

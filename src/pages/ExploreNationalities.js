@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import myContext from '../context/myContext';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import './exploreNationalities.css';
 import fetchFoodsNationalities from '../services/fetchFoodsNationalities';
 
 function ExploreNationalities() {
@@ -40,22 +41,24 @@ function ExploreNationalities() {
   const handleCard = (valu) => (
     !!valu.length
     && valu.map(({ strMeal, strMealThumb, idMeal }, i) => i < twelve && (
-      <Link key={ idMeal } to={ `/foods/${idMeal}` }>
-        <div data-testid={ `${i}-recipe-card` }>
-          <p data-testid={ `${i}-card-name` }>{strMeal}</p>
-          <img
-            width="100px"
-            src={ strMealThumb }
-            alt={ strMeal }
-            data-testid={ `${i}-card-img` }
-          />
-        </div>
-      </Link>
+      <div className="foodCard">
+        <Link key={ idMeal } to={ `/foods/${idMeal}` }>
+          <div data-testid={ `${i}-recipe-card` }>
+            <p data-testid={ `${i}-card-name` }>{strMeal}</p>
+            <img
+              width="100px"
+              src={ strMealThumb }
+              alt={ strMeal }
+              data-testid={ `${i}-card-img` }
+            />
+          </div>
+        </Link>
+      </div>
     ))
   );
 
   return (
-    <div>
+    <div className="expoNationalities">
       <Header needSearch="true" title="Explore Nationalities" />
       <Footer />
       <select
@@ -75,7 +78,9 @@ function ExploreNationalities() {
           ))
         }
       </select>
-      {pathFoodsNacionality && !!filter && handleCard(filter)}
+      <div className="allCard">
+        {pathFoodsNacionality && !!filter && handleCard(filter)}
+      </div>
     </div>
   );
 }

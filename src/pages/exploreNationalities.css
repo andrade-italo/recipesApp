@@ -1,0 +1,14 @@
+select {
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-size: large;
+  padding: 3px;
+  margin-top: 2vw;
+}
+
+.expoNationalities {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

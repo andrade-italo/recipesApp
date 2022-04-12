@@ -36,8 +36,8 @@ function DrinkProgress() {
     fetchDrink();
   }, [id]);
   useEffect(() => {
-    const teste = (JSON.parse(localStorage.getItem('inProgressRecipes'))
-     || { cocktails: { [id]: [] } }).cocktails[id];
+    const teste = (JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[id]
+     || ({ cocktails: { [id]: [] } }).cocktails[id]);
     if (teste && teste.length) {
       setReloadLocalStorage(teste);
     }
@@ -100,11 +100,12 @@ function DrinkProgress() {
     setTimeout(() => setCopy(false), segundos);
   };
   return (
-    <main>
+    <main className="progressCard">
       {
         fetchResponse.map((element, index) => (
           <div key={ index }>
             <img
+              className="imgProgress"
               src={ element.strDrinkThumb }
               alt="Foto do Drink"
               data-testid="recipe-photo"
@@ -112,51 +113,55 @@ function DrinkProgress() {
             <h3 data-testid="recipe-title">{element.strDrink}</h3>
             <p data-testid="recipe-category">{element.strCategory}</p>
             <input
-              type="image"
-              data-testid="share-btn"
-              alt="Share button"
-              src={ shareIcon }
-              onClick={ shareBtn }
-            />
-            { copy ? <p>Link copied!</p> : null}
-            <input
+              id="favoriteAndCopy"
               type="image"
               data-testid="favorite-btn"
               alt="Favorite button"
               src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
               onClick={ toggleHeart }
             />
+            <input
+              id="favoriteAndCopy"
+              type="image"
+              data-testid="share-btn"
+              alt="Share button"
+              src={ shareIcon }
+              onClick={ shareBtn }
+            />
+            { copy && <p>Link copied!</p> }
             <p data-testid="instructions">{element.strInstructions}</p>
-            <button
-              type="submit"
-              data-testid="finish-recipe-btn"
-              disabled={ handleButtonCheck() }
-              onClick={ () => history.push('/done-recipes') }
-            >
-              Finish Recipe
-
-            </button>
           </div>
         ))
       }
-      {
-        (ingredients || measures) && ingredients.map((itens, index) => (
-          <label
-            htmlFor={ itens }
-            key={ index }
-            className={ styleLine }
-            data-testid={ `${index}-ingredient-step` }
-          >
-            <input
-              type="checkbox"
-              id={ itens }
-              checked={ readReloadLocalStorage.includes(itens) }
-              onClick={ (event) => handlecheck(event) }
-            />
-            {`${itens} - ${measures[index]} `}
-          </label>
-        ))
-      }
+      <div className="labelIngredient">
+        {
+          (ingredients || measures) && ingredients.map((itens, index) => (
+            <label
+              htmlFor={ itens }
+              key={ index }
+              className={ styleLine }
+              data-testid={ `${index}-ingredient-step` }
+            >
+              <input
+                type="checkbox"
+                id={ itens }
+                checked={ readReloadLocalStorage.includes(itens) }
+                onClick={ (event) => handlecheck(event) }
+              />
+              {`${itens} - ${measures[index]} `}
+            </label>
+          ))
+        }
+      </div>
+      <button
+        type="submit"
+        data-testid="finish-recipe-btn"
+        disabled={ handleButtonCheck() }
+        onClick={ () => history.push('/done-recipes') }
+      >
+        Finish Recipe
+
+      </button>
     </main>
   );
 }

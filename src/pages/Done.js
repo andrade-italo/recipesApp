@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
+import './done.css';
 
 function Done() {
   const [filter, setFilter] = useState(['food', 'drink']);
@@ -45,78 +46,76 @@ function Done() {
   return (
     <div>
       <Header title="Done Recipes" />
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        onClick={ () => setFilter(['food', 'drink']) }
-      >
-        All
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-food-btn"
-        onClick={ () => setFilter(['food']) }
-      >
-        Food
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        onClick={ () => setFilter(['drink']) }
-      >
-        Drinks
-      </button>
-      {doneRecipes
-        .filter((doneRecipe) => filter.includes(doneRecipe.type))
-        .map((recipe, index) => (
-          <div key={ recipe.id }>
-            <Link to={ `${recipe.type}s/${recipe.id}` }>
-              <img
-                src={ recipe.image }
-                width="100px"
-                alt="recipe"
-                data-testid={ `${index}-horizontal-image` }
+      <div className="allButons">
+        <button
+          type="button"
+          data-testid="filter-by-all-btn"
+          onClick={ () => setFilter(['food', 'drink']) }
+        >
+          All
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-food-btn"
+          onClick={ () => setFilter(['food']) }
+        >
+          Food
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-drink-btn"
+          onClick={ () => setFilter(['drink']) }
+        >
+          Drinks
+        </button>
+      </div>
+      <div className="allCard">
+        {doneRecipes
+          .filter((doneRecipe) => filter.includes(doneRecipe.type))
+          .map((recipe, index) => (
+            <div className="cardDone" key={ recipe.id }>
+              <Link to={ `${recipe.type}s/${recipe.id}` }>
+                <p data-testid={ `${index}-horizontal-name` }>{recipe.name}</p>
+                <img
+                  src={ recipe.image }
+                  width="100px"
+                  alt="recipe"
+                  data-testid={ `${index}-horizontal-image` }
+                />
+              </Link>
+              <div data-testid={ `${index}-horizontal-top-text` }>
+                {recipe.nationality ? `${recipe.nationality} - ${recipe.category}`
+                  : `${recipe.category}`}
+                {recipe.alcoholicOrNot}
+              </div>
+              <div data-testid={ `${index}-horizontal-done-date` }>
+                {recipe.doneDate}
+              </div>
+
+              <input
+                type="image"
+                src={ shareIcon }
+                alt="compartilhar"
+                data-testid={ `${index}-horizontal-share-btn` }
+                width="30px"
+                onClick={ () => handleCopy(recipe.id) }
               />
-            </Link>
-            <div data-testid={ `${index}-horizontal-top-text` }>
-              {`${recipe.nationality} - ${recipe.category}`}
-              {recipe.alcoholicOrNot}
-            </div>
-            {/* <div id={ `${index}-horizontal-nationality` }>
+              {copy && <p>Link copied!</p>}
+              {recipe.tags.map(
+                (tag, i) => i <= 1 && (
+                  <p
+                    className="tags"
+                    data-testid={ `${index}-${tag}-horizontal-tag` }
+                    key={ index }
+                  >
+                    {tag}
+                  </p>
+                ),
+              )}
 
             </div>
-            <div id={ `${index}-horizontal-alcoholic` }>
-
-            </div> */}
-            <Link to={ `${recipe.type}s/${recipe.id}` }>
-              <div data-testid={ `${index}-horizontal-name` }>{recipe.name}</div>
-            </Link>
-            <div data-testid={ `${index}-horizontal-done-date` }>
-              {recipe.doneDate}
-            </div>
-
-            <input
-              type="image"
-              src={ shareIcon }
-              alt="compartilhar"
-              data-testid={ `${index}-horizontal-share-btn` }
-              width="30px"
-              onClick={ () => handleCopy(recipe.id) }
-            />
-            {copy && <p>Link copied!</p>}
-            {recipe.tags.map(
-              (tag, i) => i <= 1 && (
-                <div
-                  data-testid={ `${index}-${tag}-horizontal-tag` }
-                  key={ index }
-                >
-                  {tag}
-                </div>
-              ),
-            )}
-
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   );
 }

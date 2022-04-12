@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
+import './progress.css';
 
 function Progress() {
   const [ingredients, setIngredients] = useState([]);
@@ -37,8 +38,8 @@ function Progress() {
     fetchFood();
   }, [id]);
   useEffect(() => {
-    const teste = (JSON.parse(localStorage.getItem('inProgressRecipes'))
-     || { meals: { [id]: [] } }).meals[id];
+    const teste = (JSON.parse(localStorage.getItem('inProgressRecipes')).meals[id]
+     || ({ meals: { [id]: [] } }).meals[id]);
     if (teste && teste.length) {
       setReloadLocalStorage(teste);
     }
@@ -103,11 +104,12 @@ function Progress() {
   };
 
   return (
-    <main>
+    <main className="progressCard">
       {
         fetchResponse.map((element, index) => (
           <div key={ index }>
             <img
+              className="imgProgress"
               src={ element.strMealThumb }
               alt="Foto do Alimento"
               data-testid="recipe-photo"
@@ -115,6 +117,15 @@ function Progress() {
             <h3 data-testid="recipe-title">{element.strMeal}</h3>
             <p data-testid="recipe-category">{element.strCategory}</p>
             <input
+              id="favoriteAndCopy"
+              type="image"
+              data-testid="favorite-btn"
+              alt="Favorite button"
+              src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
+              onClick={ toggleHeart }
+            />
+            <input
+              id="favoriteAndCopy"
               type="image"
               data-testid="share-btn"
               alt="Share button"
@@ -122,47 +133,42 @@ function Progress() {
               onClick={ shareBtn }
             />
             { copy ? <p>Link copied!</p> : null}
-            <input
-              type="image"
-              data-testid="favorite-btn"
-              alt="Favorite button"
-              src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
-              onClick={ toggleHeart }
-            />
             <p data-testid="instructions">{element.strInstructions}</p>
-            <button
-              type="submit"
-              data-testid="finish-recipe-btn"
-              disabled={ handleButtonCheck() }
-              onClick={ () => history.push('/done-recipes') }
-            >
-              Finish Recipe
-
-            </button>
           </div>
         ))
       }
-      {
-        (ingredients || measures) && ingredients.map((itens, index) => (
-          <label
-            htmlFor={ itens }
-            key={ index }
-            className={ styleLine }
-            data-testid={ `${index}-ingredient-step` }
-            style={ readReloadLocalStorage.includes(itens)
-              ? { textDecorationLine: 'line-through' }
-              : { textDecorationLine: 'none' } }
-          >
-            <input
-              type="checkbox"
-              id={ itens }
-              checked={ readReloadLocalStorage.includes(itens) }
-              onClick={ (event) => handlecheck(event) }
-            />
-            {`${itens} - ${measures[index]} `}
-          </label>
-        ))
-      }
+      <div className="labelIngredient">
+        {
+          (ingredients || measures) && ingredients.map((itens, index) => (
+            <label
+              htmlFor={ itens }
+              key={ index }
+              className={ styleLine }
+              data-testid={ `${index}-ingredient-step` }
+              style={ readReloadLocalStorage.includes(itens)
+                ? { textDecorationLine: 'line-through' }
+                : { textDecorationLine: 'none' } }
+            >
+              <input
+                type="checkbox"
+                id={ itens }
+                checked={ readReloadLocalStorage.includes(itens) }
+                onClick={ (event) => handlecheck(event) }
+              />
+              {`${itens} - ${measures[index]} `}
+            </label>
+          ))
+        }
+      </div>
+      <button
+        type="submit"
+        data-testid="finish-recipe-btn"
+        disabled={ handleButtonCheck() }
+        onClick={ () => history.push('/done-recipes') }
+      >
+        Finish Recipe
+
+      </button>
     </main>
   );
 }

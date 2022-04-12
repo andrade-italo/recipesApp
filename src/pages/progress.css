@@ -1,0 +1,73 @@
+.imgProgress {
+    width: 40vw;
+}
+
+.progressCard {
+    display: grid;
+    grid-gap: 1rem;
+    margin: auto;
+    grid-template-columns: minmax(100px, 1fr);
+    align-items: flex-start;
+    text-align: center;
+    border: 1px solid black;
+    padding: 2vw;
+    top: 20px;
+    background-color: rgba(222, 184, 135, 0.9);
+    transform-style: none;
+    border-radius: 15px;
+    width: 75vw;
+    font-size: small;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 0 4px 2px grey;
+}
+
+.labelIngredient {
+    display: grid;
+    /* grid-gap: 1rem; */
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    justify-items: flex-start;
+    margin: 1vw;
+}
+
+.labelIngredient input {
+    margin-right: 10px;
+}
+
+#favoriteAndCopy {
+    display: inline-block;
+    padding: 1vw;
+}
+
+@media (min-width: 400px) {
+    .progressCard {
+        width: 65vw;
+    }
+}
+
+@media (min-width: 600px) {
+    .progressCard {
+        width: 57vw;
+    }
+    .imgProgress {
+        width: 30vw;
+    }
+}
+
+@media (min-width: 800px) {
+    .progressCard {
+        width: 50vw;
+    }
+    .imgProgress {
+        width: 20vw;
+    }
+}
+
+@media (min-width: 1000px) {
+    .progressCard {
+        width: 40vw;
+        font-size: medium;
+    }
+}
+
+

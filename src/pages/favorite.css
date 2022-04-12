@@ -1,0 +1,15 @@
+.cardFavorite {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid black;
+    padding: 2vw;
+    margin: 3vw auto;
+    top: 20px;
+    background-color: burlywood;
+    border-radius: 15px;
+    width: 20vw;
+    transition: all 0.3s ease-out;
+    justify-content: space-around;
+    box-shadow: 0 0 4px 2px grey;
+}

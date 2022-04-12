@@ -1,0 +1,44 @@
+.profileData {
+    display: grid;
+    grid-gap: 1rem;
+    /* align-self: center; */
+    margin: auto;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5vw;
+    background-color: burlywood;
+    border-radius: 15px;
+    max-width: 60vw;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 0 4px 2px grey;
+    position: relative;
+    top: calc(2vw + 3vh);
+    transform: translateY(calc(5vw + 15vh)); 
+}
+
+.profileData button {
+    width: calc(15vw + 15vh);
+}
+
+.profileData p {
+    font-weight: bolder;
+}
+
+@media (min-width: 700px) {
+  .profileData p {
+    font-size: x-large;
+    font-weight: bolder;
+  }
+
+  .profileData {
+    padding: 3vw;
+    width: 45vw;
+  }
+}
+
+.profileData { 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}

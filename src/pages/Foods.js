@@ -46,13 +46,13 @@ function Foods() {
           <div
             data-testid={ `${i}-recipe-card` }
           >
+            <p data-testid={ `${i}-card-name` }>{e.strMeal || e.strDrink}</p>
             <img
               width="100px"
               src={ e.strMealThumb || e.strDrinkThumb }
               alt={ e.strMeal || e.strDrink }
               data-testid={ `${i}-card-img` }
             />
-            <p data-testid={ `${i}-card-name` }>{e.strMeal || e.strDrink}</p>
           </div>
         </Link>
       </div>

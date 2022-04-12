@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Header from '../components/Header';
+import './favorite.css';
 
 function Favorites() {
   const [copy, setCopy] = useState(false);
@@ -37,7 +38,7 @@ function Favorites() {
     !!teste && teste.map(
       ({ id, name, image, type, alcoholicOrNot, category, nationality }, i) => (
         (
-          <div key={ id }>
+          <div className="cardFavorite" key={ id }>
             <Link to={ `/${type}s/${id}` }>
               <p data-testid={ `${i}-horizontal-name` }>{ name }</p>
               <p data-testid={ `${i}-horizontal-top-text` }>
@@ -76,30 +77,34 @@ function Favorites() {
   return (
     <div>
       <Header title="Favorite Recipes" />
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        onClick={ () => setFavoriteState(favoriteStorage) }
-      >
-        All
-      </button>
-      <button
-        type="button"
-        onClick={ () => setFavoriteState(favoriteStorage
-          .filter(({ type }) => type === 'food')) }
-        data-testid="filter-by-food-btn"
-      >
-        Food
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        onClick={ () => setFavoriteState(favoriteStorage
-          .filter(({ type }) => type === 'drink')) }
-      >
-        Drink
-      </button>
-      {handleCard(favoriteState)}
+      <div className="allButons">
+        <button
+          type="button"
+          data-testid="filter-by-all-btn"
+          onClick={ () => setFavoriteState(favoriteStorage) }
+        >
+          All
+        </button>
+        <button
+          type="button"
+          onClick={ () => setFavoriteState(favoriteStorage
+            .filter(({ type }) => type === 'food')) }
+          data-testid="filter-by-food-btn"
+        >
+          Food
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-drink-btn"
+          onClick={ () => setFavoriteState(favoriteStorage
+            .filter(({ type }) => type === 'drink')) }
+        >
+          Drink
+        </button>
+      </div>
+      <div className="allCard">
+        {handleCard(favoriteState)}
+      </div>
     </div>
   );
 }

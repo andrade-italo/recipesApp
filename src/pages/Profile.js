@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import './profile.css';
 
 function Profile() {
   const history = useHistory();
@@ -16,7 +17,7 @@ function Profile() {
   return (
     <div>
       <Header title="Profile" />
-      <form>
+      <form className="profileData">
         <p data-testid="profile-email">{email.email}</p>
         <button
           type="button"

@@ -7,6 +7,35 @@
   overflow-x: scroll;
   padding: 10px;
   width: 220px;
+  justify-items: center;
+  margin: auto;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  /* color: antiquewhite; */
+  align-items: center;
+  margin: auto;
+  /* justify-: center; */
+
+  text-align: center;
+  border: 1px solid black;
+  padding: 2vw;
+  top: 20px;
+  background-color: burlywood;
+  transform-style: none;
+  border-radius: 15px;
+  width: 38vw;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 0 4px 2px grey;
+}
+
+.inlineDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
 }
 
 .recomendation {
@@ -29,6 +58,12 @@
 }
 
 .start {
+  display: flex;
+  margin: auto;
   bottom: 0;
-  position: fixed;
+  position: sticky;
+}
+
+img {
+  border-radius: 10%;
 }

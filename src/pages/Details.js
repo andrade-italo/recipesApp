@@ -93,41 +93,46 @@ function Details() {
         width="100px"
         src={ item.strMealThumb }
       />
-      <h1 data-testid="recipe-title">{item.strMeal }</h1>
-      <p data-testid="recipe-category">{item.strCategory }</p>
-      <input
-        type="image"
-        src={ favoriteHeart ? blackHeartIcon : heartIcon }
-        alt="favorite"
-        data-testid="favorite-btn"
-        width="30px"
-        onClick={ handleFavorite }
-      />
-      <input
-        type="image"
-        src={ shareIcon }
-        alt="compartilhar"
-        data-testid="share-btn"
-        width="30px"
-        onClick={ handleCopy }
-      />
-      {copy && <p>Link copied!</p>}
+
+      <div className="inlineDetails">
+        <h3 data-testid="recipe-title">{`${item.strMeal}/`}</h3>
+        <p data-testid="recipe-category">
+          {`${item.strCategory}` }
+        </p>
+        <input
+          type="image"
+          src={ favoriteHeart ? blackHeartIcon : heartIcon }
+          alt="favorite"
+          data-testid="favorite-btn"
+          width="30px"
+          onClick={ handleFavorite }
+        />
+        <input
+          type="image"
+          src={ shareIcon }
+          alt="compartilhar"
+          data-testid="share-btn"
+          width="30px"
+          onClick={ handleCopy }
+        />
+        {copy && <p>Link copied!</p>}
+      </div>
     </div>
   );
 
   return (
     !!details.strYoutube && (
-      <div>
+      <div className="detailsContainer">
         {cardDetails(details)}
         {(Object.keys(details).filter((e) => e.includes('Ingredient') && !!details[e]))
           .map((e, i) => (
             <p key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>
               {`- ${details[e]}`}
-              {/* {ingredient.push(details[e])} */}
               {details[regex(e)] && ` - ${details[regex(e)]}`}
             </p>
           ))}
         {<iframe
+          className="video"
           width="330"
           data-testid="video"
           height="211"

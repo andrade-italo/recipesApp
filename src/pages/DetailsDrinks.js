@@ -116,7 +116,7 @@ function Details() {
   const { strDrinkThumb, strDrink, strAlcoholic, strInstructions } = details;
   return (
     !!details && (
-      <div>
+      <div className="detailsContainer">
         {cardDetails(strDrinkThumb, strDrink, strAlcoholic)}
         {(Object.keys(details).filter((e) => e.includes('Ingredient') && !!details[e]))
           .map((e, i) => (
