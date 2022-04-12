@@ -103,6 +103,7 @@ function Details() {
           width="30px"
           onClick={ handleFavorite }
         />
+        {copy && <p>Link copied!</p>}
         <input
           type="image"
           src={ shareIcon }
@@ -111,7 +112,6 @@ function Details() {
           width="30px"
           onClick={ handleCopy }
         />
-        {copy && <p>Link copied!</p>}
       </div>
     </div>
   );
