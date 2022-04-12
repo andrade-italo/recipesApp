@@ -124,6 +124,7 @@ function Progress() {
                 src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
                 onClick={ toggleHeart }
               />
+              { copy && <p>Link copied!</p> }
               <input
                 type="image"
                 data-testid="share-btn"
@@ -131,7 +132,6 @@ function Progress() {
                 src={ shareIcon }
                 onClick={ shareBtn }
               />
-              { copy && <p>Link copied!</p> }
             </div>
             <p data-testid="instructions">{element.strInstructions}</p>
           </div>
