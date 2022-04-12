@@ -1,28 +1,8 @@
-.cardDone {
-  display: grid;
-  grid-gap: 1rem;
-  text-align: center;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-  border: 1px solid black;
-  padding: 2vw;
-  margin: 3vw auto;
-  top: 20px;
-  background-color: burlywood;
-  border-radius: 15px;
-  width: 20vw;
-  transition: all 0.3s ease-out;
-  justify-content: space-around;
-  box-shadow: 0 0 4px 2px grey;
-}
-
 .tags {
-  /* display: grid;
-  grid-template-rows: 1fr; */
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  /* margin: 10px; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .allButons {
@@ -42,11 +22,3 @@
   }
 }
 
-
-.cardDone { 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.cardDone img {
-  width: calc(10vw + 5vh);
-}

@@ -1,6 +1,7 @@
-.cardFavorite {
-    display: flex;
-    flex-direction: column;
+.cardFavoriteDone {
+    display: grid;
+    /* margin: auto; */
+    grid-gap: 1rem;
     text-align: center;
     border: 1px solid black;
     padding: 2vw;
@@ -8,8 +9,42 @@
     top: 20px;
     background-color: burlywood;
     border-radius: 15px;
-    width: 20vw;
+    width: 35vw;
+    font-size: small;
     transition: all 0.3s ease-out;
-    justify-content: space-around;
     box-shadow: 0 0 4px 2px grey;
+    justify-items: center;
+}
+
+.cardFavoriteDone { 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.cardFavoriteDone p {
+    margin: 5px;
+}
+
+.favoriteAndCopy {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); */
+    /* padding: 1vw; */
+}
+
+.cardFavoriteDone img {
+    width: calc(15vw + 5vh);
+    padding: 1vw;
+}
+
+@media (min-width: 600px) {
+    .cardFavoriteDone {
+        width: 20vw;
+        font-size: medium;
+    }
+
+    .cardFavoriteDone img {
+        width: calc(10vw + 8vh);
+    }
 }

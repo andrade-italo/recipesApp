@@ -104,7 +104,7 @@ function Progress() {
   };
 
   return (
-    <main className="progressCard">
+    <main className="container">
       {
         fetchResponse.map((element, index) => (
           <div key={ index }>
@@ -116,23 +116,23 @@ function Progress() {
             />
             <h3 data-testid="recipe-title">{element.strMeal}</h3>
             <p data-testid="recipe-category">{element.strCategory}</p>
-            <input
-              id="favoriteAndCopy"
-              type="image"
-              data-testid="favorite-btn"
-              alt="Favorite button"
-              src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
-              onClick={ toggleHeart }
-            />
-            <input
-              id="favoriteAndCopy"
-              type="image"
-              data-testid="share-btn"
-              alt="Share button"
-              src={ shareIcon }
-              onClick={ shareBtn }
-            />
-            { copy ? <p>Link copied!</p> : null}
+            <div className="favoriteAndCopy">
+              <input
+                type="image"
+                data-testid="favorite-btn"
+                alt="Favorite button"
+                src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
+                onClick={ toggleHeart }
+              />
+              <input
+                type="image"
+                data-testid="share-btn"
+                alt="Share button"
+                src={ shareIcon }
+                onClick={ shareBtn }
+              />
+              { copy && <p>Link copied!</p> }
+            </div>
             <p data-testid="instructions">{element.strInstructions}</p>
           </div>
         ))

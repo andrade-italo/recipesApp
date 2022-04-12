@@ -1,4 +1,4 @@
-.profileData {
+.profileData, .buttonsExploreType {
     display: grid;
     grid-gap: 1rem;
     /* align-self: center; */
@@ -19,7 +19,7 @@
     transform: translateY(calc(5vw + 15vh)); 
 }
 
-.profileData button {
+.profileData button, .buttonsExploreType button {
     width: calc(15vw + 15vh);
 }
 
@@ -33,12 +33,12 @@
     font-weight: bolder;
   }
 
-  .profileData {
+  .profileData, .buttonsExploreType {
     padding: 3vw;
     width: 45vw;
   }
 }
 
-.profileData { 
+.profileData, .buttonsExploreType { 
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }

@@ -94,11 +94,12 @@ function Details() {
         src={ item.strMealThumb }
       />
 
-      <div className="inlineDetails">
-        <h3 data-testid="recipe-title">{`${item.strMeal}/`}</h3>
-        <p data-testid="recipe-category">
-          {`${item.strCategory}` }
-        </p>
+      {/* <div className="inlineDetails"> */}
+      <h3 data-testid="recipe-title">{`${item.strMeal}`}</h3>
+      <p data-testid="recipe-category">
+        {`${item.strCategory}` }
+      </p>
+      <div className="favoriteAndCopy">
         <input
           type="image"
           src={ favoriteHeart ? blackHeartIcon : heartIcon }
@@ -117,6 +118,7 @@ function Details() {
         />
         {copy && <p>Link copied!</p>}
       </div>
+      {/* </div> */}
     </div>
   );
 
@@ -124,16 +126,17 @@ function Details() {
     !!details.strYoutube && (
       <div className="detailsContainer">
         {cardDetails(details)}
-        {(Object.keys(details).filter((e) => e.includes('Ingredient') && !!details[e]))
-          .map((e, i) => (
-            <p key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>
-              {`- ${details[e]}`}
-              {details[regex(e)] && ` - ${details[regex(e)]}`}
-            </p>
-          ))}
-        {<iframe
+        <div className="labelIngredient">
+          {(Object.keys(details).filter((e) => e.includes('Ingredient') && !!details[e]))
+            .map((e, i) => (
+              <p key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>
+                {`- ${details[e]}`}
+                {details[regex(e)] && ` - ${details[regex(e)]}`}
+              </p>
+            ))}
+        </div>
+        <iframe
           className="video"
-          width="330"
           data-testid="video"
           height="211"
           src={ `https://www.youtube.com/embed/${details.strYoutube.slice(eleven)}` }
@@ -142,29 +145,35 @@ function Details() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media;
           gyroscope; picture-in-picture"
           allowFullScreen
-        />}
+        />
         <p data-testid="instructions">{details.strInstructions}</p>
-        <div className="allRecomendation">
-          {!!all && all.map(({ idDrink, strDrinkThumb, strDrink }, i) => i < six
+        <div className="body">
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <main id="carousel">
+            {!!all && all.map(({ idDrink, strDrinkThumb, strDrink }, i) => i < six
             && (
               <div
-                className="recomendation"
+                className="item"
                 key={ i }
                 data-testid={ `${i}-recomendation-card` }
                 to={ `${pathname}/${idDrink}` }
               >
-                <div>
-                  <img
-                    width="100px"
-                    src={ strDrinkThumb }
-                    alt={ strDrink }
-                  />
-                  <p data-testid={ `${i}-recomendation-title` }>
-                    {strDrink}
-                  </p>
-                </div>
+                <img
+                  width="100px"
+                  src={ strDrinkThumb }
+                  alt={ strDrink }
+                />
+                <p data-testid={ `${i}-recomendation-title` }>
+                  {strDrink}
+                </p>
               </div>
             ))}
+          </main>
         </div>
         {(!done || done.some(({ id }) => id !== details.idMeal))
             && (

@@ -94,23 +94,25 @@ function Details() {
       />
       <h1 data-testid="recipe-title">{strName}</h1>
       <p data-testid="recipe-category">{strCategory}</p>
-      <input
-        type="image"
-        src={ favoriteHeart ? blackHeartIcon : heartIcon }
-        alt="favorite"
-        data-testid="favorite-btn"
-        width="30px"
-        onClick={ handleFavorite }
-      />
-      <input
-        type="image"
-        src={ shareIcon }
-        alt="compartilhar"
-        data-testid="share-btn"
-        width="30px"
-        onClick={ handleCopy }
-      />
-      {copy && <p>Link copied!</p>}
+      <div className="favoriteAndCopy">
+        <input
+          type="image"
+          src={ favoriteHeart ? blackHeartIcon : heartIcon }
+          alt="favorite"
+          data-testid="favorite-btn"
+          width="30px"
+          onClick={ handleFavorite }
+        />
+        <input
+          type="image"
+          src={ shareIcon }
+          alt="compartilhar"
+          data-testid="share-btn"
+          width="30px"
+          onClick={ handleCopy }
+        />
+        {copy && <p>Link copied!</p>}
+      </div>
     </div>
   );
   const { strDrinkThumb, strDrink, strAlcoholic, strInstructions } = details;
@@ -118,20 +120,30 @@ function Details() {
     !!details && (
       <div className="detailsContainer">
         {cardDetails(strDrinkThumb, strDrink, strAlcoholic)}
-        {(Object.keys(details).filter((e) => e.includes('Ingredient') && !!details[e]))
-          .map((e, i) => (
-            <p key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>
-              {`- ${details[e]}`}
-              {ingredient.push(details[e])}
-              {details[regex(e)] && ` - ${details[regex(e)]}`}
-            </p>
-          ))}
+        <div className="labelIngredient">
+          {(Object.keys(details).filter((e) => e.includes('Ingredient') && !!details[e]))
+            .map((e, i) => (
+              <p key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>
+                {`- ${details[e]}`}
+                {ingredient.push(details[e])}
+                {details[regex(e)] && ` - ${details[regex(e)]}`}
+              </p>
+            ))}
+        </div>
+
         <p data-testid="instructions">{strInstructions}</p>
-        <div className="allRecomendation">
-          {!!all && all.map(({ idMeal, strMealThumb, strMeal }, i) => i < six
+        <div className="body">
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <input type="radio" name="position" />
+          <main id="carousel">
+            {!!all && all.map(({ idMeal, strMealThumb, strMeal }, i) => i < six
             && (
               <div
-                className="recomendation"
+                className="item"
                 key={ i }
                 data-testid={ `${i}-recomendation-card` }
                 to={ `${pathname}/${idMeal}` }
@@ -148,6 +160,7 @@ function Details() {
                 </div>
               </div>
             ))}
+          </main>
         </div>
         {(!done || done.some(({ id }) => id !== details.idDrink))
             && (

@@ -73,7 +73,7 @@ function Done() {
         {doneRecipes
           .filter((doneRecipe) => filter.includes(doneRecipe.type))
           .map((recipe, index) => (
-            <div className="cardDone" key={ recipe.id }>
+            <div className="cardFavoriteDone" key={ recipe.id }>
               <Link to={ `${recipe.type}s/${recipe.id}` }>
                 <p data-testid={ `${index}-horizontal-name` }>{recipe.name}</p>
                 <img
@@ -85,13 +85,23 @@ function Done() {
               </Link>
               <div data-testid={ `${index}-horizontal-top-text` }>
                 {recipe.nationality ? `${recipe.nationality} - ${recipe.category}`
-                  : `${recipe.category}`}
-                {recipe.alcoholicOrNot}
+                  : `${recipe.category} - ${recipe.alcoholicOrNot}`}
               </div>
               <div data-testid={ `${index}-horizontal-done-date` }>
                 {recipe.doneDate}
               </div>
-
+              <div className="tags">
+                {recipe.tags.map(
+                  (tag, i) => i <= 1 && (
+                    <p
+                      data-testid={ `${index}-${tag}-horizontal-tag` }
+                      key={ index }
+                    >
+                      {tag}
+                    </p>
+                  ),
+                )}
+              </div>
               <input
                 type="image"
                 src={ shareIcon }
@@ -101,18 +111,6 @@ function Done() {
                 onClick={ () => handleCopy(recipe.id) }
               />
               {copy && <p>Link copied!</p>}
-              {recipe.tags.map(
-                (tag, i) => i <= 1 && (
-                  <p
-                    className="tags"
-                    data-testid={ `${index}-${tag}-horizontal-tag` }
-                    key={ index }
-                  >
-                    {tag}
-                  </p>
-                ),
-              )}
-
             </div>
           ))}
       </div>

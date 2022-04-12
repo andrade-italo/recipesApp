@@ -46,8 +46,9 @@ function ExploreIngredients() {
   return (
     <div>
       <Header title="Explore Ingredients" />
-      {pathname === '/explore/foods/ingredients'
-        ? mealIngredients.meals
+      <div className="ingredientsExplore">
+        {pathname === '/explore/foods/ingredients'
+          ? mealIngredients.meals
           && mealIngredients.meals.map(
             ({ strIngredient }, index) => (index < MAX_LENGTH) && (
               <button
@@ -64,7 +65,7 @@ function ExploreIngredients() {
               </button>
             ),
           )
-        : drinkIngredients.drinks
+          : drinkIngredients.drinks
           && drinkIngredients.drinks.map(
             ({ strIngredient1 }, index) => (index < MAX_LENGTH) && (
               <button
@@ -81,6 +82,7 @@ function ExploreIngredients() {
               </button>
             ),
           )}
+      </div>
       <Footer />
     </div>
   );

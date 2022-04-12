@@ -38,12 +38,12 @@ function Favorites() {
     !!teste && teste.map(
       ({ id, name, image, type, alcoholicOrNot, category, nationality }, i) => (
         (
-          <div className="cardFavorite" key={ id }>
+          <div className="cardFavoriteDone" key={ id }>
             <Link to={ `/${type}s/${id}` }>
               <p data-testid={ `${i}-horizontal-name` }>{ name }</p>
               <p data-testid={ `${i}-horizontal-top-text` }>
                 {type === 'food' && nationality}
-                {` - ${alcoholicOrNot || category}`}
+                {` ${alcoholicOrNot || category}`}
               </p>
               <img
                 type="image"
@@ -53,23 +53,25 @@ function Favorites() {
                 data-testid={ `${i}-horizontal-image` }
               />
             </Link>
-            <input
-              type="image"
-              src={ blackHeartIcon }
-              alt="favorite"
-              data-testid={ `${i}-horizontal-favorite-btn` }
-              width="30px"
-              onClick={ () => handleFavorite(id) }
-            />
-            <input
-              type="image"
-              src={ shareIcon }
-              alt="compartilhar"
-              data-testid={ `${i}-horizontal-share-btn` }
-              width="30px"
-              onClick={ () => handleCopy(id, type) }
-            />
-            {copy && <p>Link copied!</p>}
+            <div className="favoriteAndCopy">
+              <input
+                type="image"
+                src={ blackHeartIcon }
+                alt="favorite"
+                data-testid={ `${i}-horizontal-favorite-btn` }
+                width="30px"
+                onClick={ () => handleFavorite(id) }
+              />
+              {copy && <p>Link copied!</p>}
+              <input
+                type="image"
+                src={ shareIcon }
+                alt="compartilhar"
+                data-testid={ `${i}-horizontal-share-btn` }
+                width="30px"
+                onClick={ () => handleCopy(id, type) }
+              />
+            </div>
           </div>)
       ),
     ));

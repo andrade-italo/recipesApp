@@ -2,7 +2,7 @@
     width: 40vw;
 }
 
-.progressCard {
+.container {
     display: grid;
     grid-gap: 1rem;
     margin: auto;
@@ -34,19 +34,14 @@
     margin-right: 10px;
 }
 
-#favoriteAndCopy {
-    display: inline-block;
-    padding: 1vw;
-}
-
 @media (min-width: 400px) {
-    .progressCard {
+    .container {
         width: 65vw;
     }
 }
 
 @media (min-width: 600px) {
-    .progressCard {
+    .container {
         width: 57vw;
     }
     .imgProgress {
@@ -55,7 +50,7 @@
 }
 
 @media (min-width: 800px) {
-    .progressCard {
+    .container {
         width: 50vw;
     }
     .imgProgress {
@@ -64,7 +59,7 @@
 }
 
 @media (min-width: 1000px) {
-    .progressCard {
+    .container {
         width: 40vw;
         font-size: medium;
     }
