@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
+import './progress.css';
 
 function DrinkProgress() {
   const [ingredients, setIngredients] = useState([]);
@@ -100,7 +101,7 @@ function DrinkProgress() {
     setTimeout(() => setCopy(false), segundos);
   };
   return (
-    <main className="progressCard">
+    <main className="container">
       {
         fetchResponse.map((element, index) => (
           <div key={ index }>
@@ -110,25 +111,25 @@ function DrinkProgress() {
               alt="Foto do Drink"
               data-testid="recipe-photo"
             />
-            <h3 data-testid="recipe-title">{element.strDrink}</h3>
+            <h4 data-testid="recipe-title">{element.strDrink}</h4>
             <p data-testid="recipe-category">{element.strCategory}</p>
-            <input
-              id="favoriteAndCopy"
-              type="image"
-              data-testid="favorite-btn"
-              alt="Favorite button"
-              src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
-              onClick={ toggleHeart }
-            />
-            <input
-              id="favoriteAndCopy"
-              type="image"
-              data-testid="share-btn"
-              alt="Share button"
-              src={ shareIcon }
-              onClick={ shareBtn }
-            />
-            { copy && <p>Link copied!</p> }
+            <div className="favoriteAndCopy">
+              <input
+                type="image"
+                data-testid="favorite-btn"
+                alt="Favorite button"
+                src={ changeHeart ? blackHeartIcon : whiteHeartIcon }
+                onClick={ toggleHeart }
+              />
+              <input
+                type="image"
+                data-testid="share-btn"
+                alt="Share button"
+                src={ shareIcon }
+                onClick={ shareBtn }
+              />
+              { copy && <p>Link copied!</p> }
+            </div>
             <p data-testid="instructions">{element.strInstructions}</p>
           </div>
         ))
