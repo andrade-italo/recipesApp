@@ -86,7 +86,7 @@ function Details() {
   };
 
   const cardDetails = (item) => (
-    <div>
+    <div className="details">
       <img
         alt="foto"
         data-testid="recipe-photo"
@@ -105,7 +105,6 @@ function Details() {
           src={ favoriteHeart ? blackHeartIcon : heartIcon }
           alt="favorite"
           data-testid="favorite-btn"
-          width="30px"
           onClick={ handleFavorite }
         />
         {copy && <p>Link copied!</p>}
@@ -114,11 +113,9 @@ function Details() {
           src={ shareIcon }
           alt="compartilhar"
           data-testid="share-btn"
-          width="30px"
           onClick={ handleCopy }
         />
       </div>
-      {/* </div> */}
     </div>
   );
 

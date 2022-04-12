@@ -1,14 +1,12 @@
 .detailsContainer {
-  /* display: flex; */
-  /* flex-direction: column; */
   margin: auto;
   justify-items: center;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid gold;
   padding: 2vw;
   top: 20px;
-  background-color: rgba(222, 184, 135, 0.9);
-  transform-style: none;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: antiquewhite;
   border-radius: 15px;
   width: 250px;
   transition: all 0.3s ease-out;
@@ -19,11 +17,24 @@
   grid-template-columns: minmax(100px, 1fr);
 }
 
-.favoriteAndCopy {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-evenly;
+.details {
+  border: 1px solid black;
+  padding: 2%;
+  color: black;
+  background-color: rgba(222, 184, 135, 0.9);
+  border-radius: 15px;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 0 4px 2px grey;
+  width: 80%;
+}
+
+.details h3 {
+  margin: 0;
+}
+
+.details img {
+  width: 80%;
+  margin: 10px 0;
 }
 
 .labelIngredient {
@@ -122,7 +133,7 @@ div.item {
   --r: calc(var(--position) - var(--offset));
   --abs: max(calc(var(--r) * -1), var(--r));
   transition: all 0.25s linear;
-  transform: rotateY(calc(-15deg * var(--r)))
+  transform: rotateY(calc(-10deg * var(--r)))
     translateX(calc(-150px * var(--r)));
   z-index: calc((var(--position) - var(--abs)));
 }
